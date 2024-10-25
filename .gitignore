@@ -1,0 +1,42 @@
+# Ignore build directories
+/build/
+/_build/
+/out/
+/build*/
+/subprojects/*
+!/subprojects/*.wrap
+
+# Ignore Meson-specific files
+/meson-logs/
+/meson-private/
+/meson-info/
+
+# Ignore Ninja-specific files
+*.ninja
+.ninja_deps
+.ninja_log
+
+# Ignore other common build artifacts
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.dll
+*.obj
+*.lib
+*.pdb
+
+# Ignore Python cache files (if using Python scripts)
+__pycache__/
+*.py[cod]
+
+# Ignore temporary files
+*.tmp
+*.swp
+*~
+.DS_Store
+
+# Ignore virtual environments
+.venv/
+env/
