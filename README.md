@@ -104,8 +104,36 @@ meson setup
 # setup and build
 meson setup build
 ```
+The meson.build file
+```meson
+# Find GoogleTest
+# method 1
+cmake = import('cmake')
+gtest_proj = cmake.subproject('googletest', required: true)
+if gtest_proj.found()
+    gtest_dep = declare_dependency(
+        dependencies: [
+            threads_dep,
+            gtest_proj.dependency('gtest'),
+            gtest_proj.dependency('gtest_main'),
+        ]
+    )
+    gmock_dep = declare_dependency(
+        dependencies: [
+            gtest_proj.dependency('gmock')
+        ]
+    )
+else
+    assert(
+        not get_option('tests').enabled(),
+        'Googletest is required if tests are enabled'
+    )
+endif
+# method 2
+# ...
+```
 The googletest.wrap file
-```console
+```meson
 [wrap-git]
 url = https://github.com/google/googletest
 revision = HEAD
